@@ -1,102 +1,93 @@
-# ATLAS 2.0 Platform — Next.js Package
+# ATLAS 3.0 — Autonomous Business Intelligence Platform
 
-> **Track ONE [T1]** — Marketing Site + Interactive Demo
+**From Idea to Empire. Autonomously.**
 
-## Quick Deploy to Hostinger
+ATLAS is a next-generation business planning platform that integrates AI-powered conversation, production-grade financial modeling, market research, strategic analysis, and document generation into a unified system. Built with React, TypeScript, and Tailwind CSS.
 
-### Option 1: Direct Upload (Recommended)
+## Live Demo
 
-1. **Extract** this package
-2. **Install dependencies locally:**
-   ```bash
-   npm install
-   ```
-3. **Build the static export:**
-   ```bash
-   npm run build
-   ```
-4. **Upload the `out/` folder** contents to Hostinger
+[**→ Launch ATLAS**](https://unless-atlas-platform.netlify.app)
 
-### Option 2: Git Deployment
+## Platform Modules
 
-1. Push to GitHub
-2. Connect Hostinger to repo
-3. Set build command: `npm run build`
-4. Set output directory: `out`
+| Module | Description |
+|--------|------------|
+| **Dashboard** | Business health scoring, KPI overview, module navigation |
+| **AI Chat** | Claude-powered business planning conversations with full project context |
+| **Context** | Upload/paste existing business documents, notes, and prior plans |
+| **Financials** | Full production cost modeling — recipe costing, facility comparison, revenue streams, P&L with 12-month projections |
+| **Research** | AI-powered market analysis, competitor intel, and location research with live web data |
+| **Strategy** | SWOT analysis and Business Model Canvas with AI generation |
+| **Documents** | Generate investor-ready business plan sections informed by all platform data |
+| **Settings** | Project configuration, data export, and reset |
 
----
+## Architecture
 
-## Project Structure
+- **Frontend**: Vite + React 18 + TypeScript
+- **Styling**: Tailwind CSS (dark theme, amber accents)
+- **State**: Zustand with localStorage persistence
+- **AI**: Claude API (Sonnet) with web search integration
+- **Routing**: React Router v6 with SPA configuration
+- **Deploy**: Netlify with automatic builds
 
-```
-atlas-nextjs/
-├── app/                    # Next.js App Router pages
-│   ├── layout.tsx         # Root layout
-│   ├── page.tsx           # Homepage
-│   └── pricing/
-│       └── page.tsx       # Pricing page
-│
-├── components/             # React components
-│   ├── Navigation.tsx
-│   ├── Hero.tsx
-│   ├── Features.tsx
-│   ├── Agents.tsx
-│   ├── Comparison.tsx
-│   ├── Innovation.tsx
-│   ├── CTA.tsx
-│   ├── Footer.tsx
-│   └── DemoModal.tsx      # ⭐ Interactive demo
-│
-├── lib/
-│   └── demo-scenarios.ts  # Demo data (3 scenarios)
-│
-├── styles/
-│   └── globals.css        # Global styles
-│
-├── package.json
-├── next.config.js
-└── tsconfig.json
-```
+### Key Design Pattern
 
----
+The **FinancialSnapshot** interface serves as the integration backbone. Every change in the financial model emits a snapshot that flows to:
+- Dashboard health scores and KPI cards
+- Sidebar financial pulse widget
+- AI Chat system prompt (financial context)
+- Document generation (data-driven sections)
+- Strategy analysis (AI-generated SWOT/BMC)
 
-## Features
-
-✅ **Marketing Pages**
-- Homepage with full sections
-- Pricing page with toggle
-- Responsive design
-
-✅ **Interactive Demo**
-- 3 business scenarios (Bakery, Detailing, SaaS)
-- Animated conversation flow
-- Live agent progress indicators
-- Research & financial results
-- Document preview
-
----
-
-## Local Development
+## Quick Start
 
 ```bash
 npm install
 npm run dev
-# Open http://localhost:3000
+```
+
+## Deploy
+
+### Netlify (recommended)
+Connect this repo → Netlify auto-detects `netlify.toml`:
+- Build command: `npm install && npm run build`
+- Publish directory: `dist`
+- SPA redirects configured automatically
+
+### Vercel
+Connect this repo → `vercel.json` handles SPA routing.
+
+### Manual
+```bash
+npm install
+npm run build
+# Serve dist/ with any static host
+```
+
+## Stack
+
+```
+src/
+├── App.tsx                    # Route definitions
+├── main.tsx                   # Entry point (BrowserRouter)
+├── index.css                  # Tailwind + dark theme base
+├── stores/
+│   └── useStore.ts            # Zustand store (project, financials, context, chat)
+├── components/
+│   ├── Layout.tsx             # Sidebar navigation + financial pulse
+│   └── ui/                    # shadcn/ui component library
+└── pages/
+    ├── Home.tsx               # Landing page
+    ├── Dashboard.tsx          # Overview + health score
+    ├── Chat.tsx               # AI conversation interface
+    ├── Context.tsx            # Document upload/paste/notes
+    ├── Financials.tsx         # Production financial model (integrated)
+    ├── Research.tsx           # AI market research
+    ├── Strategy.tsx           # SWOT + Business Model Canvas
+    ├── Documents.tsx          # Business plan generator
+    └── Settings.tsx           # Project configuration
 ```
 
 ---
 
-## Environment
-
-No environment variables required for static deployment.
-
-For future MVP integration, add:
-```
-DEMO_MODE=true
-```
-
----
-
-**Track:** ONE (Marketing)  
-**Version:** 2.0.0  
-**Status:** Production Ready
+Built by **UNLESS** · Autonomous Business Intelligence
