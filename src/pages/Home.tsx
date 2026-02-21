@@ -3,7 +3,7 @@ import { ArrowRight, BarChart3, MessageSquare, FileText, Target, Search, FolderI
 
 const features = [
   { icon: MessageSquare, title: 'AI Business Chat', desc: 'Build your plan through natural conversation' },
-  { icon: BarChart3, title: 'Production Financials', desc: 'Full cost modeling with facility comparison and P&L' },
+  { icon: BarChart3, title: 'Production Financials', desc: 'Bakery-specific cost modeling with facility comparison and P&L — a working example of industry financial analysis' },
   { icon: Target, title: 'Strategy Canvas', desc: 'SWOT analysis and business model canvas' },
   { icon: Search, title: 'Market Research', desc: 'Competitive landscape and market sizing' },
   { icon: FolderInput, title: 'Context Import', desc: 'Upload existing docs, notes, and prior plans' },

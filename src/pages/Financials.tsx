@@ -195,7 +195,7 @@ export default function Financials() {
   return (
     <div className="p-6 max-w-[1100px] mx-auto">
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-4">
         <div>
           <h1 className="text-2xl font-extrabold text-white/90 tracking-tight">{project.name}</h1>
           <p className="text-xs text-white/40 mt-0.5">Production Financial Model — {project.location}</p>
@@ -206,6 +206,17 @@ export default function Financials() {
           <span className={`inline-block mt-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold ${fm === 'dedicated' ? 'bg-amber-500/20 text-amber-300' : 'bg-emerald-500/20 text-emerald-300'}`}>
             {fm === 'dedicated' ? '🏭 Dedicated' : '🤝 Shared'}
           </span>
+        </div>
+      </div>
+
+      {/* Example Template Notice */}
+      <div className="mb-4 px-4 py-3 rounded-xl bg-blue-500/[0.07] border border-blue-500/20 flex items-start gap-3">
+        <span className="text-base mt-0.5">🧁</span>
+        <div>
+          <div className="text-xs font-semibold text-blue-300/90">Bakery Financial Model — Domain-Specific Example</div>
+          <p className="text-[11px] text-white/40 mt-0.5 leading-relaxed">
+            This is a purpose-built financial model for an artisan bakery operation — covering recipe costing, kitchen equipment, production labor, and bakery-specific revenue channels. <span className="text-white/55">If you're starting a bakery, use it directly.</span> It also serves as a working example of how ATLAS approaches financial modeling: the same methodology (COGS breakdown → facility analysis → revenue modeling → P&L) can be applied to build models for any industry.
+          </p>
         </div>
       </div>
 

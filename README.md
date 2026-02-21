@@ -15,11 +15,17 @@ A comprehensive AI-powered venture building platform for researching, planning, 
 | **Dashboard** | `/app` | Business health scoring, KPI overview, module navigation |
 | **AI Chat** | `/app/chat` | Claude-powered business planning with full project context |
 | **Context** | `/app/context` | Upload existing docs, notes, and prior plans |
-| **Financials** | `/app/financials` | Production cost modeling — recipe costing, facility comparison, revenue streams, P&L |
+| **Financials** | `/app/financials` | Bakery-specific financial model — recipe costing, kitchen equipment, production labor, bakery revenue channels, and full P&L. Serves as both a usable tool for bakery startups and a working example of ATLAS financial modeling methodology |
 | **Research** | `/app/research` | AI-powered market analysis, competitor intel, location research with live web data |
 | **Strategy** | `/app/strategy` | SWOT analysis and Business Model Canvas with AI generation |
 | **Documents** | `/app/documents` | Generate investor-ready business plan sections |
 | **Settings** | `/app/settings` | Project configuration, data export, and reset |
+
+## Financial Modeling Approach
+
+The included financial model is **bakery-specific** — built around recipe costing, kitchen equipment depreciation, food production labor, and bakery revenue channels (wholesale, retail, farmers market, custom orders). If you're starting a bakery, it's ready to use as-is with real data.
+
+It also demonstrates ATLAS's financial modeling methodology: **COGS breakdown → Facility analysis → Revenue modeling → P&L projection**. This same four-stage pattern applies to any production-based business. Future versions will include additional industry-specific templates.
 
 ## Architecture
 
@@ -63,7 +69,7 @@ atlas/
 │       ├── Dashboard.tsx          # Overview + health score
 │       ├── Chat.tsx               # AI conversation
 │       ├── Context.tsx            # Document upload/paste/notes
-│       ├── Financials.tsx         # Production financial model
+│       ├── Financials.tsx         # Bakery financial model (domain-specific example)
 │       ├── Research.tsx           # AI market research
 │       ├── Strategy.tsx           # SWOT + Business Model Canvas
 │       ├── Documents.tsx          # Business plan generator
