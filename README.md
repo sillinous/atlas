@@ -1,43 +1,86 @@
-# ATLAS 3.0 — Autonomous Business Intelligence Platform
+# ATLAS 3.0
 
-**From Idea to Empire. Autonomously.**
+## Adaptive Technology for Launch, Analysis & Strategy
 
-ATLAS is a next-generation business planning platform that integrates AI-powered conversation, production-grade financial modeling, market research, strategic analysis, and document generation into a unified system. Built with React, TypeScript, and Tailwind CSS.
+A comprehensive AI-powered venture building platform for researching, planning, building, and launching new businesses. From idea to empire — autonomously.
 
-## Live Demo
+**Live Demo:** [unless-atlas-platform.netlify.app](https://unless-atlas-platform.netlify.app)
 
-[**→ Launch ATLAS**](https://unless-atlas-platform.netlify.app)
+---
 
 ## Platform Modules
 
-| Module | Description |
-|--------|------------|
-| **Dashboard** | Business health scoring, KPI overview, module navigation |
-| **AI Chat** | Claude-powered business planning conversations with full project context |
-| **Context** | Upload/paste existing business documents, notes, and prior plans |
-| **Financials** | Full production cost modeling — recipe costing, facility comparison, revenue streams, P&L with 12-month projections |
-| **Research** | AI-powered market analysis, competitor intel, and location research with live web data |
-| **Strategy** | SWOT analysis and Business Model Canvas with AI generation |
-| **Documents** | Generate investor-ready business plan sections informed by all platform data |
-| **Settings** | Project configuration, data export, and reset |
+| Module | Route | Description |
+|--------|-------|-------------|
+| **Dashboard** | `/app` | Business health scoring, KPI overview, module navigation |
+| **AI Chat** | `/app/chat` | Claude-powered business planning with full project context |
+| **Context** | `/app/context` | Upload existing docs, notes, and prior plans |
+| **Financials** | `/app/financials` | Production cost modeling — recipe costing, facility comparison, revenue streams, P&L |
+| **Research** | `/app/research` | AI-powered market analysis, competitor intel, location research with live web data |
+| **Strategy** | `/app/strategy` | SWOT analysis and Business Model Canvas with AI generation |
+| **Documents** | `/app/documents` | Generate investor-ready business plan sections |
+| **Settings** | `/app/settings` | Project configuration, data export, and reset |
 
 ## Architecture
 
-- **Frontend**: Vite + React 18 + TypeScript
-- **Styling**: Tailwind CSS (dark theme, amber accents)
-- **State**: Zustand with localStorage persistence
-- **AI**: Claude API (Sonnet) with web search integration
-- **Routing**: React Router v6 with SPA configuration
-- **Deploy**: Netlify with automatic builds
+### Integration Pattern
 
-### Key Design Pattern
+The **FinancialSnapshot** interface is the integration backbone. Every change in the financial model emits a snapshot that flows to:
 
-The **FinancialSnapshot** interface serves as the integration backbone. Every change in the financial model emits a snapshot that flows to:
 - Dashboard health scores and KPI cards
 - Sidebar financial pulse widget
-- AI Chat system prompt (financial context)
-- Document generation (data-driven sections)
-- Strategy analysis (AI-generated SWOT/BMC)
+- AI Chat system prompt (financial context for conversations)
+- Document generation (data-driven business plan sections)
+- Strategy analysis (AI-generated SWOT/BMC with financial data)
+
+### Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| Frontend | React 18 + TypeScript |
+| Build | Vite |
+| Styling | Tailwind CSS + shadcn/ui |
+| State | Zustand (localStorage persistence) |
+| AI | Anthropic Claude API (Sonnet) |
+| Routing | React Router v6 |
+| Deploy | Netlify / Vercel / Docker |
+| Database | PostgreSQL + Prisma (schema ready) |
+
+### Project Structure
+
+```
+atlas/
+├── src/
+│   ├── App.tsx                    # Route definitions
+│   ├── main.tsx                   # Entry point
+│   ├── index.css                  # Tailwind + dark theme
+│   ├── stores/useStore.ts         # Zustand store
+│   ├── components/
+│   │   ├── Layout.tsx             # Sidebar nav + financial pulse
+│   │   └── ui/                    # shadcn/ui component library
+│   └── pages/
+│       ├── Home.tsx               # Landing page
+│       ├── Dashboard.tsx          # Overview + health score
+│       ├── Chat.tsx               # AI conversation
+│       ├── Context.tsx            # Document upload/paste/notes
+│       ├── Financials.tsx         # Production financial model
+│       ├── Research.tsx           # AI market research
+│       ├── Strategy.tsx           # SWOT + Business Model Canvas
+│       ├── Documents.tsx          # Business plan generator
+│       └── Settings.tsx           # Project configuration
+├── docs/
+│   ├── ATLAS_Platform_Specification.md
+│   └── projects/cheesecake-atelier/
+│       ├── Equipment_Space_Design_Specifications.md
+│       ├── Marketing_Calendar_Launch_Strategy.md
+│       ├── Operations_Manual_Recipe_Standards.md
+│       └── Demand_Forecasting_System_Specification.md
+├── prisma/schema.prisma           # Database schema (future backend)
+├── Dockerfile                     # Container deployment
+├── docker-compose.yml             # Full stack (app + postgres + redis)
+├── netlify.toml                   # Netlify auto-config
+└── vercel.json                    # Vercel SPA routing
+```
 
 ## Quick Start
 
@@ -49,13 +92,16 @@ npm run dev
 ## Deploy
 
 ### Netlify (recommended)
-Connect this repo → Netlify auto-detects `netlify.toml`:
-- Build command: `npm install && npm run build`
-- Publish directory: `dist`
-- SPA redirects configured automatically
+Connect repo → `netlify.toml` auto-configures build + SPA redirects.
 
 ### Vercel
-Connect this repo → `vercel.json` handles SPA routing.
+Connect repo → `vercel.json` handles routing.
+
+### Docker
+```bash
+docker-compose up -d
+# App at localhost:3000, Postgres at 5432, Redis at 6379
+```
 
 ### Manual
 ```bash
@@ -64,30 +110,11 @@ npm run build
 # Serve dist/ with any static host
 ```
 
-## Stack
-
-```
-src/
-├── App.tsx                    # Route definitions
-├── main.tsx                   # Entry point (BrowserRouter)
-├── index.css                  # Tailwind + dark theme base
-├── stores/
-│   └── useStore.ts            # Zustand store (project, financials, context, chat)
-├── components/
-│   ├── Layout.tsx             # Sidebar navigation + financial pulse
-│   └── ui/                    # shadcn/ui component library
-└── pages/
-    ├── Home.tsx               # Landing page
-    ├── Dashboard.tsx          # Overview + health score
-    ├── Chat.tsx               # AI conversation interface
-    ├── Context.tsx            # Document upload/paste/notes
-    ├── Financials.tsx         # Production financial model (integrated)
-    ├── Research.tsx           # AI market research
-    ├── Strategy.tsx           # SWOT + Business Model Canvas
-    ├── Documents.tsx          # Business plan generator
-    └── Settings.tsx           # Project configuration
-```
-
 ---
 
-Built by **UNLESS** · Autonomous Business Intelligence
+**Built by UNLESS** · Autonomous Business Intelligence
+
+*Initial project: The Cheesecake Atelier (Newton, IL)*
+*Powered by Anthropic Claude AI*
+
+MIT License
